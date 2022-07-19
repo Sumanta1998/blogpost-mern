@@ -52,20 +52,26 @@ exports.getAllBlogs = (req, res, next) => {
 exports.getAllfeeds = (req, res, next) => {
   // const user = req.userData;
   Blog.find({ isApprove: true })
-    // .populate("writer", user._id)
+    .populate("writer")
     .then((blogs) => {
+      console.log(blogs);
       const response = {
         count: blogs.length,
         blogs: blogs.map((blog) => {
           return {
             _id: blog._id,
             content: blog.content,
+            writer: {
+              username: blog.writer.username,
+              email: blog.writer.email,
+            },
           };
         }),
       };
       res.status(200).json(response);
     })
     .catch((error) => {
+      console.log(error);
       next(error);
     });
 };

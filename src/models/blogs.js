@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const User = require("./user");
+
 const blogSchema = new mongoose.Schema(
   {
     // _id: mongoose.Schema.Types.ObjectId,
@@ -9,7 +11,7 @@ const blogSchema = new mongoose.Schema(
     writer: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
-      required: true,
+      // required: true,
     },
     isApprove: {
       type: Boolean,
