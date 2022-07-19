@@ -33,6 +33,9 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle requests
+app.get("/", function (req, res) {
+  res.redirect("/blogs");
+});
 app.use("/admin", adminRoutes);
 app.use("/blogs", blogRoutes);
 app.use("/user", userRoutes);
